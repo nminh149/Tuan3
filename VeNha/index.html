@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài tập về nhà - Tuần 3</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+    <!-- Thư viện icon: Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        :root {
+            --bg: #fff6f8;
+            --card: #ffffff;
+            --pink: #f6a9bd;
+            --pink-deep: #d9648a;
+            --pink-soft: #ffe3ea;
+            --text: #4b3441;
+            --muted: #9b8291;
+            --line: #f8dbe3;
+            --shadow: 0 12px 32px rgba(217, 100, 138, .12);
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: "Quicksand", "Segoe UI", Arial, sans-serif;
+            color: var(--text);
+            line-height: 1.55;
+            background:
+                radial-gradient(520px 520px at 8% 4%, #ffdce6 0%, transparent 70%),
+                radial-gradient(560px 560px at 95% 30%, #f1e4ff 0%, transparent 70%),
+                radial-gradient(520px 520px at 20% 100%, #ffe8d9 0%, transparent 70%),
+                var(--bg);
+            background-attachment: fixed;
+        }
+
+        #root {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 40px 18px 24px;
+        }
+
+        .card {
+            background: var(--card);
+            border-radius: 28px;
+            box-shadow: var(--shadow);
+            margin-bottom: 26px;
+            overflow: hidden;
+        }
+
+        /* ===== Thông tin cá nhân ===== */
+        .banner {
+            height: 130px;
+            background: linear-gradient(120deg, #ffc9d8 0%, #f9b7cd 45%, #e3c9f7 100%);
+        }
+
+        .profile-body {
+            text-align: center;
+            padding: 0 28px 34px;
+        }
+
+        .profile-body img {
+            width: 152px;
+            height: 152px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 6px solid #fff;
+            box-shadow: 0 8px 22px rgba(217, 100, 138, .28);
+            margin-top: -76px;
+            background: var(--pink-soft);
+        }
+
+        .profile-body h1 {
+            margin: 16px 0 6px;
+            font-size: 30px;
+            font-weight: 700;
+            color: var(--pink-deep);
+        }
+
+        .school {
+            margin: 0;
+            color: var(--muted);
+            font-weight: 600;
+        }
+        .school i { color: var(--pink); margin-right: 6px; }
+
+        .chips {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin: 18px 0 0;
+            padding: 0;
+            list-style: none;
+        }
+        .chips li {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 8px 16px;
+            border-radius: 999px;
+            background: var(--pink-soft);
+            color: #a14566;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .social {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin: 24px 0 0;
+            padding: 0;
+            list-style: none;
+        }
+        .social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            background: #fff;
+            border: 2px solid var(--pink-soft);
+            color: var(--pink-deep);
+            font-size: 20px;
+            text-decoration: none;
+            transition: background .2s, color .2s, border-color .2s;
+        }
+        .social a:hover,
+        .social a:focus-visible {
+            background: var(--pink-deep);
+            border-color: var(--pink-deep);
+            color: #fff;
+        }
+
+        /* ===== Danh sách bài tập ===== */
+        .section-head {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 28px 30px 6px;
+        }
+        .section-head .badge {
+            width: 46px;
+            height: 46px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, #ffc9d8, #f2b8e4);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+        }
+        .section-head h2 { margin: 0; font-size: 22px; font-weight: 700; }
+        .section-head p { margin: 0; font-size: 14px; color: var(--muted); font-weight: 500; }
+
+        .exercises {
+            list-style: none;
+            margin: 0;
+            padding: 20px 30px 32px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
+        .exercises a {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            height: 100%;
+            padding: 20px 20px 18px;
+            border-radius: 22px;
+            background: var(--bg);
+            border: 1.5px solid var(--line);
+            color: var(--text);
+            text-decoration: none;
+            transition: background .25s, border-color .25s, box-shadow .25s;
+        }
+        .exercises a:hover,
+        .exercises a:focus-visible {
+            background: #fff;
+            border-color: var(--pink);
+            box-shadow: 0 10px 24px rgba(217, 100, 138, .15);
+        }
+
+        .tile {
+            width: 50px;
+            height: 50px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 23px;
+            margin-bottom: 10px;
+        }
+        .t1 { background: #ffd9e3; color: #d9648a; }
+        .t2 { background: #ffe5d6; color: #e2845a; }
+        .t3 { background: #eadfff; color: #8e68d6; }
+        .t4 { background: #ffeab8; color: #cf9420; }
+        .t5 { background: #d9ecff; color: #4f8fd0; }
+        .t6 { background: #e4d7f4; color: #5f4a82; }
+
+        .exercises .title { font-size: 18px; font-weight: 700; }
+        .exercises .desc { font-size: 14px; color: var(--muted); font-weight: 500; padding-right: 22px; }
+
+        .exercises .go {
+            position: absolute;
+            top: 20px;
+            right: 18px;
+            font-size: 22px;
+            color: var(--pink);
+            transition: transform .25s, color .25s;
+        }
+        .exercises a:hover .go,
+        .exercises a:focus-visible .go { transform: translateX(4px); color: var(--pink-deep); }
+
+        a:focus-visible { outline: 3px solid var(--pink-deep); outline-offset: 3px; }
+
+        footer {
+            text-align: center;
+            color: var(--muted);
+            font-size: 13.5px;
+            font-weight: 500;
+            padding: 4px 0 24px;
+        }
+        footer i { color: var(--pink-deep); }
+
+        @media (max-width: 620px) {
+            .exercises { grid-template-columns: 1fr; padding: 18px 18px 26px; }
+            .section-head { padding: 24px 20px 4px; }
+            .profile-body h1 { font-size: 25px; }
+        }
+    </style>
+</head>
+<body>
+    <div id="root">
+        <section class="card">
+            <div class="banner"></div>
+            <div class="profile-body">
+                <img src="imgs/avt.jpg" alt="Ảnh cá nhân">
+                <h1>Nguyễn Đặng Ngọc Minh</h1>
+                <p class="school"><i class="bi bi-mortarboard-fill"></i> Thương mại điện tử, Khoa BIT, UEH</p>
+
+                <ul class="chips">
+                    <li><i class="bi bi-person-vcard-fill"></i> MSSV: 31241020263</li>
+                    <li><i class="bi bi-people-fill"></i> Lớp: EE0001</li>
+                    <li><i class="bi bi-geo-alt-fill"></i> TP. Hồ Chí Minh</li>
+                </ul>
+
+                <ul class="social">
+                    <li><a href="https://github.com/Hoaian262" title="GitHub" target="_blank" rel="noopener"><i class="bi bi-github"></i></a></li>
+                    <li><a href="mailto:minhnguyen.31241020263@st.ueh.edu.vn" title="Email"><i class="bi bi-envelope-heart-fill"></i></a></li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- DANH SÁCH BÀI TẬP -->
+        <section class="card">
+            <div class="section-head">
+                <div class="badge"><i class="bi bi-journal-bookmark-fill"></i></div>
+                <div>
+                    <h2>Các bài tập đã làm</h2>
+                    <p>Chọn một bài để xem kết quả</p>
+                </div>
+            </div>
+
+            <ul class="exercises">
+                <li><a href="baitap1.html"><i class="bi bi-arrow-right-circle go"></i><div class="tile t1"><i class="bi bi-fonts"></i></div><span class="title">Bài 1</span><span class="desc">Định dạng văn bản: UEH, CNTTKD, text-shadow</span></a></li>
+                <li><a href="baitap2.html"><i class="bi bi-arrow-right-circle go"></i><div class="tile t2"><i class="bi bi-layout-text-window-reverse"></i></div><span class="title">Bài 2</span><span class="desc">Menu ngang và Font Awesome</span></a></li>
+                <li><a href="baitap3.html"><i class="bi bi-arrow-right-circle go"></i><div class="tile t3"><i class="bi bi-hdd-network-fill"></i></div><span class="title">Bài 3</span><span class="desc">Landing page Shared Hosting</span></a></li>
+                <li><a href="baitap4.html"><i class="bi bi-arrow-right-circle go"></i><div class="tile t4"><i class="bi bi-grid-3x3-gap-fill"></i></div><span class="title">Bài 4</span><span class="desc">My Portfolio (gallery dùng Flexbox)</span></a></li>
+                <li><a href="baitap5.html"><i class="bi bi-arrow-right-circle go"></i><div class="tile t5"><i class="bi bi-layout-three-columns"></i></div><span class="title">Bài 5</span><span class="desc">Bố cục Header / Nav / Main / Footer (float)</span></a></li>
+                <li><a href="css2/css2.html"><i class="bi bi-arrow-right-circle go"></i><div class="tile t6"><i class="bi bi-moon-stars-fill"></i></div><span class="title">Bài CSS2 - The Bat Family</span><span class="desc">Danh sách nhân vật, hiệu ứng hover</span></a></li>
+            </ul>
+        </section>
+
+        <footer>&copy; 2026 - Nguyễn Đặng Ngọc Minh - Bài tập Phát triển ứng dụng TMĐT <i class="bi bi-heart-fill"></i></footer>
+    </div>
+</body>
+</html>
